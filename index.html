@@ -1,1 +1,358 @@
-<html><body><h1>Matteo !! Funziona!</h1></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Background</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        background-color: rgba(0, 0, 0, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: white;
+        font-family: Arial, sans-serif;
+        padding: 0 20px;
+        z-index: 10;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo img {
+        height: 60px;
+        margin-right: 20px;
+      }
+
+      .info-icon {
+        cursor: pointer;
+      }
+      /*
+      .videoContainer {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        padding: 0;
+        margin: 0;
+        left: 0px;
+        top: 0px;
+        z-index: -1000;
+        overflow: hidden;
+       
+      }
+
+      .videoPlayer {
+        min-height: 100%;
+        min-width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        object-fit: cover;
+      }
+      */
+      .videoContainer {
+        position: relative;
+        height: 100vh; /* Full viewport height */
+        overflow: hidden; /* Prevent scroll bars */
+      }
+
+      #myVideo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 90%;
+        min-height: 90%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1; /* Send video behind content */
+        transform: translate(-50%, -50%); /* Centering */
+      }
+
+      /*
+      #myVideo {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        min-width: 100%;
+        height: 100%;
+        min-height: 100%;
+        z-index: -100;
+        background-size: cover;
+      }
+      */
+
+      .popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        z-index: 2000;
+        display: none;
+      }
+
+      .popup-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .popup-header h2 {
+        margin: 0;
+        font-size: 1.5em;
+      }
+
+      .popup-close {
+        cursor: pointer;
+        font-size: 1.2em;
+        border: none;
+        background: none;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: -300px;
+        width: 300px;
+        height: 100%;
+        background-color: rgba(112, 102, 102, 0.9);
+        color: white;
+        padding: 20px;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        transition: left 0.3s ease;
+        z-index: 1000;
+        overflow-y: auto;
+      }
+
+      .sidebar.active {
+        left: 0;
+      }
+
+      .sidebar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .sidebar-header .close-btn {
+        cursor: pointer;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5em;
+      }
+
+      .sidebar-content {
+        margin-top: 20px;
+      }
+
+      .sidebar-content img {
+        width: 100%;
+        margin: 10px 0;
+        cursor: pointer;
+      }
+
+      .sidebar-content ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .sidebar-content ul li {
+        padding: 10px 0;
+        cursor: pointer;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .sidebar-content ul li:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .back-btn {
+        cursor: pointer;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1em;
+        margin-bottom: 20px;
+      }
+
+      .video-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .overprint {
+        position: relative;
+        z-index: 1;
+        color: white;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="videoContainer">
+      <video autoplay muted loop id="myVideo" class="videoPlayer">
+        <source
+          src="video/Porsche 911 - 992 GT3Rs at Night_1080p"
+          type="video/webm"
+        />
+      </video>
+    </div>
+
+    <div class="header">
+      <button onclick="toggleSidebar()" class="material-icons">menu</button>
+      <div class="logo">
+        <img
+          src="https://i.pinimg.com/originals/1e/9b/50/1e9b504a29a3ab5a18160ab6ad88d254.jpg"
+          alt="Porsche Logo"
+        />
+      </div>
+      <i class="material-icons info-icon" onclick="showPopup()">info</i>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h2>Menu</h2>
+        <button class="close-btn" onclick="toggleSidebar()">✖</button>
+      </div>
+      <div class="sidebar-content" id="sidebarContent">
+        <ul>
+          <li onclick="showModels()">Modelli</li>
+          <li onclick="showHistoryPopup()">Storia</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="popup" id="infoPopup">
+      <div class="popup-header">
+        <h2>Informazioni sull'autore</h2>
+        <button class="popup-close" onclick="hidePopup()">✖</button>
+      </div>
+      <p>
+        Creato da Matteo Canalini. Questo è una demo di una pagina con video in
+        background e controlli UI interattivi.
+      </p>
+    </div>
+
+    <div class="popup" id="historyPopup">
+      <div class="popup-header">
+        <h2>Storia</h2>
+        <button class="popup-close" onclick="hideHistoryPopup()">✖</button>
+      </div>
+      <p>
+        La Porsche è stata fondata nel 1931 da Ferdinand Porsche e ha una ricca
+        storia di innovazioni automobilistiche.
+      </p>
+    </div>
+
+    <div class="popup" id="modelPopup">
+      <div class="popup-header">
+        <h2 id="modelName"></h2>
+        <button class="popup-close" onclick="hideModelPopup()">✖</button>
+      </div>
+      <p id="modelDetails"></p>
+    </div>
+
+    <!--
+    <div class="yt-wrapper">
+      <div class="yt-frame-container">
+        <iframe
+          src="https://www.youtube.com/embed/IQlqm5lNqQE?autoplay=1&mute=1&loop=1&color=white&controls=0&modestbranding=1&playsinline=1&rel=0&enablejsapi=1&playlist=IQlqm5lNqQE"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+    -->
+
+    <script>
+      const sidebar = document.getElementById("sidebar");
+      const sidebarContent = document.getElementById("sidebarContent");
+
+      function toggleSidebar() {
+        sidebar.classList.toggle("active");
+      }
+
+      function showPopup() {
+        document.getElementById("infoPopup").style.display = "block";
+      }
+
+      function hidePopup() {
+        document.getElementById("infoPopup").style.display = "none";
+      }
+
+      function showHistoryPopup() {
+        document.getElementById("historyPopup").style.display = "block";
+      }
+
+      function hideHistoryPopup() {
+        document.getElementById("historyPopup").style.display = "none";
+      }
+
+      function showModels() {
+        sidebarContent.innerHTML = `
+          <button class="back-btn" onclick="resetSidebar()">← Torna Indietro</button>
+          <img src="img/OTExIENhcnJlcmE5OTIxQjI.webp" alt="Porsche 911" onclick="showModelPopup('Porsche 911', 'Caratteristiche: Sportiva, Velocità: 330km/h, Prezzo: €150,000')">
+          <img src="img/OTExIENhcnJlcmEgQ2FicmlvbGV0OTkyM0Iy.webp" alt="Porsche Cayenne" onclick="showModelPopup('Porsche Cayenne', 'Caratteristiche: SUV, Velocità: 250km/h, Prezzo: €80,000')">
+          <img src="img/OTExIFRhcmdhIDQgR1RTOTkyNTQy.webp" alt="Porsche Cayenne" onclick="showModelPopup('Porsche Cayenne', 'Caratteristiche: SUV, Velocità: 250km/h, Prezzo: €80,000')">
+          <img src="img/OTExIEdUMyBSUzk5Mjg1MA.webp" alt="Porsche Cayenne" onclick="showModelPopup('Porsche Cayenne', 'Caratteristiche: SUV, Velocità: 250km/h, Prezzo: €80,000')">
+                    
+        `;
+      }
+
+      function resetSidebar() {
+        sidebarContent.innerHTML = `
+          <ul>
+            <li onclick="showModels()">Modelli</li>
+            <li onclick="showHistoryPopup()">Storia</li>
+          </ul>
+        `;
+      }
+
+      function showModelPopup(name, details) {
+        document.getElementById("modelName").textContent = name;
+        document.getElementById("modelDetails").textContent = details;
+        document.getElementById("modelPopup").style.display = "block";
+      }
+
+      function hideModelPopup() {
+        document.getElementById("modelPopup").style.display = "none";
+      }
+    </script>
+  </body>
+</html>
