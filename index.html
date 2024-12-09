@@ -6,13 +6,21 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Video Background</title>
+    <title>Porsche 911</title>
     <style>
       body {
         margin: 0;
         overflow: hidden;
+        font-family: Lato, Geneva, Tahoma, sans-serif;
       }
 
       .header {
@@ -26,7 +34,6 @@
         align-items: center;
         justify-content: space-between;
         color: white;
-        font-family: Arial, sans-serif;
         padding: 0 20px;
         z-index: 10;
       }
@@ -41,8 +48,17 @@
         margin-right: 20px;
       }
 
+      .menu-btn {
+        border: none;
+        background: transparent;
+        color: white;
+      }
+
       .info-icon {
         cursor: pointer;
+      }
+      .text-center {
+        text-align: center;
       }
       /*
       .videoContainer {
@@ -111,23 +127,89 @@
         z-index: 2000;
         display: none;
       }
-
       .popup-header {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: baseline;
       }
 
       .popup-header h2 {
         margin: 0;
-        font-size: 1.5em;
+        font-size: 1.9rem;
+      }
+
+      .popup-header-left {
+        width: 60%;
+        text-align: center;
+      }
+
+      .popup-header-right {
+        width: 40%;
       }
 
       .popup-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
         cursor: pointer;
         font-size: 1.2em;
         border: none;
         background: none;
+      }
+      #engine {
+        margin: 10px 0 0 0;
+        display: inline-block;
+        background: #cccccc;
+        border-radius: 2px;
+        padding: 2px;
+        font-size: 1rem;
+      }
+      #claim {
+        margin: 0 0 0 0;
+        font-size: 1.5rem;
+      }
+
+      .cont-price {
+        margin: 10px 0 0 0;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      #modelDetails {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+
+      .details-left {
+        width: 40%;
+      }
+
+      .details-right {
+        width: 60%;
+      }
+
+      .details-item {
+        margin: 20px 0 0 0;
+        font-size: 1.6rem;
+      }
+
+      .details-item-small {
+        font-size: 1rem;
+      }
+
+      .details-desc {
+        margin: 2px 0 0 0;
+        font-size: 0.7rem;
+      }
+
+      #long_desc {
+        margin: 10px 0 0 0;
+        font-weight: 300;
+      }
+
+      #image-details {
+        margin: 0 auto;
       }
 
       .sidebar {
@@ -188,6 +270,16 @@
       .sidebar-content ul li:hover {
         background-color: rgba(255, 255, 255, 0.1);
       }
+      .menu-item {
+        opacity: 0.8;
+        transition: all;
+        padding: 0 0 2px 0;
+      }
+
+      .menu-item.selected {
+        opacity: 1;
+        border-bottom: 2px solid grey;
+      }
 
       .back-btn {
         cursor: pointer;
@@ -219,6 +311,32 @@
         height: 100vh;
         text-align: center;
       }
+
+      @media screen and (min-width: 768px) {
+        .popup {
+          max-width: 610px;
+        }
+      }
+
+      #image-big {
+        width: 350px;
+        height: auto;
+      }
+
+      #image-details{
+        width: 550px;
+        height: auto;
+      }
+      /*
+      #historyPopup{
+ 
+            background-image: url('img/s-l1200.jpg'); 
+            background-size: cover; 
+            background-repeat: no-repeat; 
+
+        }
+        */
+
     </style>
   </head>
   <body>
@@ -232,7 +350,9 @@
     </div>
 
     <div class="header">
-      <button onclick="toggleSidebar()" class="material-icons">menu</button>
+      <button onclick="toggleSidebar()" class="menu-btn material-icons">
+        menu
+      </button>
       <div class="logo">
         <img
           src="https://i.pinimg.com/originals/1e/9b/50/1e9b504a29a3ab5a18160ab6ad88d254.jpg"
@@ -272,19 +392,66 @@
         <button class="popup-close" onclick="hideHistoryPopup()">✖</button>
       </div>
       <p>
-        La Porsche è stata fondata nel 1931 da Ferdinand Porsche e ha una ricca
-        storia di innovazioni automobilistiche.
+        La Porsche 911 nacque nei primi anni '60 come evoluzione della Porsche 356, il primo modello dell'azienda tedesca. Ferry Porsche, figlio del fondatore Ferdinand Porsche, desiderava creare un'auto sportiva più potente, spaziosa e confortevole per un pubblico esigente. Il progetto, inizialmente denominato 901, fu affidato a Ferdinand Alexander Porsche, detto "Butzi", nipote del fondatore.
+        <br><br>La 911 fece il suo debutto al Salone di Francoforte nel 1963, suscitando immediato entusiasmo grazie al suo design elegante e alle sue prestazioni eccezionali. Il nome fu cambiato in 911 per una disputa con Peugeot, che rivendicava i numeri con uno zero centrale. Dotata di un motore boxer a sei cilindri montato posteriormente, la 911 divenne subito un’icona per la combinazione unica di stile, maneggevolezza e innovazione tecnologica, mantenendo un design che sarebbe rimasto fedele a sé stesso per decenni.
       </p>
     </div>
 
-    <div class="popup" id="modelPopup">
+    <!--<div class="popup" id="modelPopup">
       <div class="popup-header">
         <h2 id="modelName"></h2>
         <button class="popup-close" onclick="hideModelPopup()">✖</button>
       </div>
-      <p id="modelDetails"></p>
+      <div id="modelDetails"></div>
+      <div id="modelDescription"></div>
+    </div>-->
+    <div class="popup" id="modelPopup">
+      <div class="popup-header">
+        <div class="popup-header-left">
+          <h2 id="modelName"></h2>
+          <p id="engine"></p>
+          <p class="cont-price">da EUR <span id="price"></span> IVA inclusa</p>
+        </div>
+        <div class="popup-header-right">
+          <p id="claim"></p>
+          <div id="long_desc"></div>
+        </div>
+        <button class="popup-close" onclick="hideModelPopup()">✖</button>
+      </div>
+      <div id="modelDetails">
+        <div class="details-left">
+          <div>
+            <p class="details-item">
+              <span id="accelerometer"></span>
+              <span class="details-item-small">s</span>
+            </p>
+            <p class="details-desc">Accelerazione 0 - 100 km/h</p>
+          </div>
+          <div>
+            <p class="details-item">
+              <span id="power"></span>
+              <span class="details-item-small">kw / </span
+              ><span id="cavalli"></span>
+              <span class="details-item-small">cv</span>
+            </p>
+            <p class="details-desc">Potenza (kW)/Potenza (CV)</p>
+          </div>
+          <div>
+            <p class="details-item">
+              <span id="speed"></span>
+              <span class="details-item-small">km/h</span>
+            </p>
+            <p class="details-desc">Velocit&agrave; massima</p>
+          </div>
+        </div>
+        <div class="details-right">
+          <img src="" alt="macchina" id="image-big" />
+        </div>
+      </div>
+      <div class="text-center">
+        <img src="" alt="dettagli macchina" id="image-details" />
+      </div>
     </div>
-
     <!--
     <div class="yt-wrapper">
       <div class="yt-frame-container">
@@ -303,12 +470,73 @@
     <script>
       const sidebar = document.getElementById("sidebar");
       const sidebarContent = document.getElementById("sidebarContent");
+      const dataCars = [
+        {
+          id: 1,
+          image: "img/OTExIENhcnJlcmE5OTIxQjI.webp",
+          image_big: "img/1-carrera-front.avif",
+          image_details: "img/carrera_details.jpg",
+          model: "911 Carrera",
+          accelerometer: "4,1",
+          claim: "The one and always",
+          desc: "Sportiva",
+          speed: "294",
+          power: "290",
+          cavalli: "394",
+          engine: "Benzina",
+          price: "133.686",
+          long_desc:
+            "Chi sogna una Porsche, di solito ha in mente questo modello: da 60 anni la 911 è la quintessenza di una vettura sportiva emozionante e potente, adatta all'uso quotidiano. Siediti al volante della nuova 911 ed entra a far parte di una community unica.",
+        },
+        {
+          id: 2,
+          image: "img/OTExIFRhcmdhIDQgR1RTOTkyNTQy.webp",
+          image_big: "img/911-targa-4-gts-front.avif",
+          image_details: "img/targa_details.jpg",
+          claim: "The one and always",
+          model: "911 Targa",
+          accelerometer: "3,1",
+          desc: "SUV",
+          speed: "312",
+          power: "398",
+          cavalli: "541",
+          engine: "Benzina",
+          price: "200.332",
+          long_desc:
+            "Chi sogna una Porsche, di solito ha in mente questo modello: da 60 anni la 911 è la quintessenza di una vettura sportiva emozionante e potente, adatta all'uso quotidiano. Siediti al volante della nuova 911 ed entra a far parte di una community unica.",
+        },
+        {
+          id: 3,
+          image: "img/OTExIEdUMzk5MjgxMg.webp",
+          image_big: "img/911-gt3-rear-view.avif",
+          image_details: "img/gt3_details.jpg",
+          claim: "The one and always",
+          model: "911 GT3",
+          accelerometer: "3,4",
+          desc: "Sportiva",
+          speed: "311",
+          power: "375",
+          cavalli: "510",
+          engine: "Benzina",
+          price: "215.543",
+          long_desc:
+            "Da quasi 25 anni la 911 GT3 accetta solo i limiti della fisica, lasciandosi alle spalle il già noto. Il design testato nel motorsport e la massima potenza sempre disponibile ne fanno una vettura dalla versatilità imbattibile, perfetta per la pista e per la strada.",
+        },
+      ];
 
       function toggleSidebar() {
         sidebar.classList.toggle("active");
+        //hideAllPopups();
+      }
+
+      function hideAllPopups() {
+        hideHistoryPopup();
+        hideModelPopup();
+        hidePopup();
       }
 
       function showPopup() {
+        hideAllPopups();
         document.getElementById("infoPopup").style.display = "block";
       }
 
@@ -317,6 +545,7 @@
       }
 
       function showHistoryPopup() {
+        hideAllPopups();
         document.getElementById("historyPopup").style.display = "block";
       }
 
@@ -324,30 +553,82 @@
         document.getElementById("historyPopup").style.display = "none";
       }
 
+      function addBackElement() {
+        const backBtn = document.createElement("button");
+        backBtn.setAttribute("class", "back-btn");
+        backBtn.setAttribute("onclick", "resetSidebar()");
+        backBtn.innerHTML = "← Torna Indietro";
+        sidebarContent.append(backBtn);
+      }
+
+      function addCar(car) {
+        const image = document.createElement("img");
+        image.setAttribute("id", "car_" + car.id);
+        image.setAttribute("class", "menu-item");
+        image.setAttribute("src", car.image);
+        image.setAttribute("alt", car.model);
+        image.setAttribute("onclick", "showModelPopup(" + car.id + ")");
+        sidebarContent.append(image);
+      }
+
       function showModels() {
-        sidebarContent.innerHTML = `
-          <button class="back-btn" onclick="resetSidebar()">← Torna Indietro</button>
-          <img src="img/OTExIENhcnJlcmE5OTIxQjI.webp" alt="Porsche 911" onclick="showModelPopup('Porsche 911', 'Caratteristiche: Sportiva, Velocità: 330km/h, Prezzo: €150,000')">
-          <img src="img/OTExIENhcnJlcmEgQ2FicmlvbGV0OTkyM0Iy.webp" alt="Porsche Cayenne" onclick="showModelPopup('Porsche Cayenne', 'Caratteristiche: SUV, Velocità: 250km/h, Prezzo: €80,000')">
-          <img src="img/OTExIFRhcmdhIDQgR1RTOTkyNTQy.webp" alt="Porsche Cayenne" onclick="showModelPopup('Porsche Cayenne', 'Caratteristiche: SUV, Velocità: 250km/h, Prezzo: €80,000')">
-          <img src="img/OTExIEdUMyBSUzk5Mjg1MA.webp" alt="Porsche Cayenne" onclick="showModelPopup('Porsche Cayenne', 'Caratteristiche: SUV, Velocità: 250km/h, Prezzo: €80,000')">
-                    
-        `;
+        hideAllPopups();
+        sidebarContent.innerHTML = "";
+        addBackElement();
+        for (const item of dataCars) {
+          addCar(item);
+        }
+      }
+
+      function geModelById(id) {
+        const arr = dataCars.find((el) => el.id === id);
+        return arr;
       }
 
       function resetSidebar() {
         sidebarContent.innerHTML = `
-          <ul>
-            <li onclick="showModels()">Modelli</li>
-            <li onclick="showHistoryPopup()">Storia</li>
-          </ul>
-        `;
+        <ul>
+          <li onclick="showModels()">Modelli</li>
+          <li onclick="showHistoryPopup()">Storia</li>
+        </ul>
+      `;
+        // close all popups
+        hideAllPopups();
       }
 
-      function showModelPopup(name, details) {
-        document.getElementById("modelName").textContent = name;
-        document.getElementById("modelDetails").textContent = details;
+      function setSelected(id) {
+        const carTag = document.getElementById("car_" + id);
+        const arr = document.querySelectorAll(".menu-item");
+        arr.forEach((item) => {
+          if (item.id == "car_" + id) {
+            if (!item.classList.contains("selected")) {
+              item.classList.add("selected");
+            }
+          } else {
+            item.classList.remove("selected");
+          }
+        });
+      }
+
+      function showModelPopup(id) {
+        hideAllPopups();
+        setSelected(id);
+        const car = geModelById(id);
+        document.getElementById("modelName").textContent = car.model;
+        document.getElementById("long_desc").textContent = car.long_desc;
+        document.getElementById("claim").innerHTML = car.claim;
+        document.getElementById("speed").innerHTML = car.speed;
+        document.getElementById("engine").innerHTML = car.engine;
+        document.getElementById("price").innerHTML = car.price;
+        document.getElementById("accelerometer").innerHTML = car.accelerometer;
+        document.getElementById("cavalli").innerHTML = car.cavalli;
+        document.getElementById("power").innerHTML = car.power;
         document.getElementById("modelPopup").style.display = "block";
+        document.getElementById("long_desc").innerHTML = car.long_desc;
+        document.getElementById("image-big").setAttribute("src", car.image_big);
+        document
+          .getElementById("image-details")
+          .setAttribute("src", car.image_details);
       }
 
       function hideModelPopup() {
